@@ -3,7 +3,7 @@ const { postActivity } = require('../controllers/activity');
 
 const router = Router();
 
-router.post('/', );
+router.post('/', postActivity);
 
 
 module.exports = router;

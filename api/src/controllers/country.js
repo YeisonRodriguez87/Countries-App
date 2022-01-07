@@ -41,6 +41,25 @@ const getApiInfo = async () => {
 };*/
 
 
+const getIdCountry = async (req, res) => {
+    try {
+        const { id } = req.params;
+        let countryId = await Country.findByPk(id.toUpperCase(),{
+            /*where: {
+                id: {
+                  [Op.iLike]: `%${id}%`,
+                },
+            },*/    
+            attributes: ['flag', 'name', 'continent', 'id', 'capital', 'subregion', 'area', 'population'],
+            include: Activity
+        })
+        countryId? res.send(countryId): res.send('The entered country does not exist.');
+    } catch (error) {
+        res.send(error);
+    }
+};
+
+
 const getAllNameCountries = async (req, res) => {
     try {
         const { name } = req.query;
@@ -67,25 +86,6 @@ const getAllNameCountries = async (req, res) => {
     }
 };
 
-
-
-const getIdCountry = async (req, res) => {
-    try {
-        const { id } = req.params;
-        let countryId = await Country.findByPk(id.toUpperCase(),{
-            /*where: {
-                id: {
-                  [Op.iLike]: `%${id}%`,
-                },
-            },*/    
-            attributes: ['flag', 'name', 'continent', 'id', 'capital', 'subregion', 'area', 'population'],
-            include: Activity
-        })
-        countryId? res.send(countryId): res.send('The entered country does not exist.');
-    } catch (error) {
-        res.send(error);
-    }
-};
 
 module.exports = {
     getApiInfo,

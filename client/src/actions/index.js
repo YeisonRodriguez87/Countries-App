@@ -10,3 +10,19 @@ export function getCountries(){
         })
     }
 }
+
+
+export function filterContinent(payload){
+    return({
+            type: 'FILTER_CONTINENT',
+            payload,
+        })
+}
+
+
+export function alphabeticalOrder(payload){
+    return({
+            type: 'ALPHABETICAL_ORDER',
+            payload,
+        })
+}

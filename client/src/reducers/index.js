@@ -1,6 +1,7 @@
 
 const initialState = {
-    countries: []
+    countries: [],
+    allCountries: []
 }
 
 
@@ -9,7 +10,21 @@ function rootReducer (state = initialState, action) {
         case 'GET_COUNTRIES':
             return{
                 ...state,
-                countries: action.payload
+                countries: action.payload,
+                allCountries: action.payload
+            }  
+        case 'FILTER_CONTINENT':
+            const allCountries = state.allCountries;
+            const continentFiltered = action.payload === 'All' ? allCountries : allCountries.filter(element => element.continent === action.payload) 
+            return{
+                ...state,
+                countries: continentFiltered
+            }
+        case 'ALPHABETICAL_ORDER':
+                
+            return{
+                ...state,
+                
             }
         default:
             return {...state};            

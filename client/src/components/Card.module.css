@@ -1,24 +1,24 @@
 .divCard{
-    border-radius: 5px;
+    border-radius: 30px;
     border-color: black;
-    box-shadow: inset 0 0 10px;
+    box-shadow: 0 0 10px 5px rgb(170, 167, 167);
     color: rgb(39, 38, 41);    
-    background-color: #f1e3e304;
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    padding-bottom: 30px;
+    background-color: white;    
+    border: 1px solid rgba(39, 38, 41, 0);
+    margin-top: 20px;
 }
 
 .imgFlag{
     width: 250px;
-    height: 150px;
-    border-radius: 5px;
+    height: 180px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: solid 0.1px black;
 }
 
 
 .divCard:hover{
-    background-color: #f1e3e365;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgb(39, 38, 41);
+    background-color:rgba(195, 191, 214, 0.945);    
+    
+    
 }

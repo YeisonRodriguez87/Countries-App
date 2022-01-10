@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
-import SearchBar from './components/SearchBar';
+import ActivityCreate from './components/ActivityCreate';
 
 
 
@@ -13,6 +13,7 @@ function App() {
         <Routes>          
           <Route path = '/' element = {<LandingPage/>}/>
           <Route path = '/home' element = {<Home/>}/>
+          <Route path = '/activity' element = {<ActivityCreate/>}/>
         </Routes>
       </BrowserRouter> 
     </div>

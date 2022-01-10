@@ -7,13 +7,15 @@ import Card  from './Card'
 import { Fragment } from 'react';
 import Paged from './Paged';
 import styles from './Home.module.css'
-
+import SearchBar from './SearchBar';
 
 
 
 export default function Home(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
+
+    const [/*order*/, setOrder] = useState('');
 
     //PAGINADO-------------------------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +50,11 @@ export default function Home(){
 
     function handleAlphabeticalOrder(e) {
         dispatch(alphabeticalOrder(e.target.value));
+        setCurrentPage(1);
+        setOrder(e.target.value)
     }
+
+   
 
 
     return(
@@ -58,16 +64,14 @@ export default function Home(){
             <button onClick = {e => {handleAllCountries(e)}}>Show all Countries
             </button>
             <div>
-                <input type="text" placeholder={'Enter the Country'}/>
-                <button>Search</button>
-
                 <select onChange= {e => handleAlphabeticalOrder(e)}>
                     <option value = 'Asc'>Ascendent</option>
                     <option value = 'Desc'>Descendent</option>
                 </select>
 
                 <select>
-                    <option value = 'Population'>Population</option>
+                    <option value = 'Max'>Higher Population</option>
+                    <option value = 'Min'>Lower Population</option>
                 </select>
                 
                 <select onChange= {e => handleFilterContinent(e)}>
@@ -90,19 +94,24 @@ export default function Home(){
                     allCountries = {allCountries.length}
                     paged = {paged}
                 />
+                <SearchBar/>
                 <div className= {styles.divCards}>
-            {
-                currentCountries?.map((element) => {
-                    return(
-                        <Fragment>
-                            <Link to = {'/home/' + element.id}>     
-                                <Card 
-                                    flag= {element.flag} name= {element.name} id= {element.id} continent= {element.continent}
-                                /> 
-                            </Link>
-                        </Fragment>
-                    )})
-            } 
+                {
+                    currentCountries?.map((element) => {
+                        return(
+                            <Fragment>
+                                <Link to = {'/home/' + element.id}>     
+                                    <Card 
+                                        key= {element.id}
+                                        flag= {element.flag} 
+                                        name= {element.name} 
+                                        id= {element.id} 
+                                        continent= {element.continent}
+                                    /> 
+                                </Link>
+                            </Fragment>
+                        )})
+                } 
                 </div>   
             </div>
         </div>

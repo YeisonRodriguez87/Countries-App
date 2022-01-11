@@ -10,7 +10,7 @@ export default function LandingPage(){
                 <h1 className = {styles.h1}>Countries App</h1> 
                 <h3>¡Welcome to tour the world!</h3> 
                 <Link to = '/home'>
-                    <button className = {styles.btn}>HOME</button>
+                    <button className = {styles.btn}>LET'S GO</button>
                 </Link>
             </div>
         </div>

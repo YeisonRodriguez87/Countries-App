@@ -46,3 +46,18 @@ export function alphabeticalOrder(payload){
         })
 }
 
+
+/*export function populationOrder(payload){
+    return({
+            type: 'POPULATION_ORDER',
+            payload,
+        })
+}*/
+
+export function postActivity(payload){
+    return async function(distpach){
+        const newActivity = await axios.post("http://localhost:3001/activity", payload);
+        return newActivity;
+    }
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { getCountries, filterContinent, alphabeticalOrder } from '../actions'
+import { getCountries, filterContinent, alphabeticalOrder, /*populationOrder*/ } from '../actions'
 import { Link } from 'react-router-dom'; 
 import Card  from './Card'
 import { Fragment } from 'react';
@@ -54,7 +54,11 @@ export default function Home(){
         setOrder(e.target.value)
     }
 
-   
+    /*function handlePopulationOrder(e) {
+        dispatch(populationOrder(e.target.value));
+        setCurrentPage(1);
+        setOrder(e.target.value)
+    }*/  
 
 
     return(
@@ -65,13 +69,15 @@ export default function Home(){
             </button>
             <div>
                 <select onChange= {e => handleAlphabeticalOrder(e)}>
+                    <option value = ''>Order By Name</option>
                     <option value = 'Asc'>Ascendent</option>
                     <option value = 'Desc'>Descendent</option>
                 </select>
 
-                <select>
-                    <option value = 'Max'>Higher Population</option>
-                    <option value = 'Min'>Lower Population</option>
+                <select /*onChange= {e => handlePopulationOrder(e)}*/>
+                    <option value = ''>Order By Population</option> 
+                    <option value = 'High'>Higher</option>
+                    <option value = 'Low'>Lower</option>
                 </select>
                 
                 <select onChange= {e => handleFilterContinent(e)}>
@@ -86,7 +92,7 @@ export default function Home(){
                 </select>
                 
                 <select>
-                    <option value = 'Activities'>Activities</option>
+                    <option value = 'Activities'>All Activities</option>
                 </select>
 
                 <Paged

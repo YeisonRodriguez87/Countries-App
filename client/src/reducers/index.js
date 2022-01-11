@@ -1,4 +1,3 @@
-
 const initialState = {
     countries: [],
     allCountries: []
@@ -24,31 +23,38 @@ function rootReducer (state = initialState, action) {
             return{
                 ...state,
                 countries: continentFiltered
-            }
+            }        
         case 'ALPHABETICAL_ORDER':            
             const orderAlphabeticalArray =  action.payload === 'Asc' ? 
                 state.countries.sort(function(a, b){
-                    if (a.name > b.name) {
-                        return 1;
-                    }
-                    if (a.name < b.name) {
-                        return -1;
-                    }
-                    return 0;
+                   return a.name.localeCompare(b.name);                   
                 }):
                 state.countries.sort(function(a, b){
-                    if (a.name > b.name) {
-                        return -1;
-                    }
-                    if (a.name < b.name) {
-                        return 1;
-                    }
-                    return 0;
+                    return b.name.localeCompare(a.name);
                 })  
             return{
                 ...state,
                 countries: orderAlphabeticalArray
             }
+
+        /*case 'POPULATION_ORDER':            
+            const orderPopulationArray =  action.payload === 'Max' ? 
+                state.countries.sort(function(a, b){
+                   return a.population.localeCompare(b.population);                   
+                }):
+                state.countries.sort(function(a, b){
+                    return b.population.localeCompare(a.population);
+                })  
+            return{
+                ...state,
+                countries: orderPopulationArray
+            }*/    
+
+
+        case 'POST_ACTIVITY':
+                return{
+                    ...state,                      
+                }    
             
         default:
             return {...state};            

@@ -2,7 +2,7 @@ const { Country, Activity } = require('../db');
 
 
 const postActivity = async (req, res) => {    
-    const { name, difficulty, duration, season, country } = req.body;
+    const { name, difficulty, duration, season, countries } = req.body;
     try {   
        const newActivity = await Activity.create({
            name,
@@ -10,7 +10,7 @@ const postActivity = async (req, res) => {
            duration,
            season
        });
-       country.forEach(async (element) => {
+       countries.forEach(async (element) => {
            let countryAct = await Country.findOne({
                where: {
                    name: element 

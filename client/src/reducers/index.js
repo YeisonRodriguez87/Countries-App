@@ -1,6 +1,9 @@
 const initialState = {
-    countries: [],
-    allCountries: []
+    countries: [], // Paises modificados
+    allCountries: [], // Paises sin modificaciones
+    details: [], 
+    allActivities: [], // Actividades sin modificaciones
+    activities: [] // Actividades modificadas
 }
 
 
@@ -9,8 +12,8 @@ function rootReducer (state = initialState, action) {
         case 'GET_COUNTRIES':
             return{
                 ...state,
-                countries: action.payload,
-                allCountries: action.payload
+                allCountries: action.payload,
+                countries: action.payload                
             }  
         case 'GET_NAME_COUNTRIES':
             return{
@@ -36,25 +39,40 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 countries: orderAlphabeticalArray
             }
-
-        /*case 'POPULATION_ORDER':            
-            const orderPopulationArray =  action.payload === 'Max' ? 
+        case 'POPULATION_ORDER':            
+            const orderPopulationArray =  action.payload === 'High' ? 
                 state.countries.sort(function(a, b){
-                   return a.population.localeCompare(b.population);                   
+                   return a.population - b.population;                   
                 }):
                 state.countries.sort(function(a, b){
-                    return b.population.localeCompare(a.population);
+                    return b.population - a.population;
                 })  
             return{
                 ...state,
                 countries: orderPopulationArray
-            }*/    
-
-
+            }
         case 'POST_ACTIVITY':
                 return{
                     ...state,                      
-                }    
+                }  
+        case 'GET_DETAILS_COUNTRY':
+                return{
+                    ...state,
+                    details: action.payload  
+                }
+        case 'GET_ACTIVITIES':
+                return{
+                    ...state,
+                    allActivities: action.payload,
+                    activities: action.payload                
+                } 
+        case 'FILTER_ACTIVITY':
+            const allActivities = state.allActivities;
+            const activityFiltered = action.payload === 'All' ? allActivities : allActivities.filter(element => element.allActivities === action.payload) 
+                return{
+                    ...state,
+                    activities: activityFiltered
+                }                                 
             
         default:
             return {...state};            

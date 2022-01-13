@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import ActivityCreate from './components/ActivityCreate';
+import Detail from './components/Detail';
 
 
 
@@ -14,6 +15,7 @@ function App() {
           <Route path = '/' element = {<LandingPage/>}/>
           <Route path = '/home' element = {<Home/>}/>
           <Route path = '/activity' element = {<ActivityCreate/>}/>
+          <Route path = '/home/:id' element = {<Detail/>}/>
         </Routes>
       </BrowserRouter> 
     </div>

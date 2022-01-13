@@ -4,15 +4,24 @@ import { postActivity, getCountries } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-function formValidate(input) {
-    
-}
+/*function formValidate(input) {
+    let errors = {};
+    if (!input.name) {
+        errors.name = 'Name required';        
+    }else if(!input.duration || (input.duration <= 0)){
+         errors.duration = 'Duration not found'
+    }else if(!input.countries){
+        errors.countries = 'Country required'
+   }
+    return errors;
+}*/
 
 
 export default function ActivityCreate(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const countries = useSelector((state) => state.countries);
+    //const [errors, setErrors] = useState({});
 
     const [input, setInput] = useState({
         name: '',
@@ -28,7 +37,10 @@ export default function ActivityCreate(){
             ...input,
             [e.target.name]: e.target.value
         })
-        console.log(input)
+        /*setErrors(formValidate)({
+            ...input,
+            [e.target.name]: e.target.value
+        })*/
     }
 
     function handleSelect(e) {
@@ -52,6 +64,13 @@ export default function ActivityCreate(){
         })        
     } 
 
+    function handleDelete(e) {
+        setInput({
+            ...input,
+            countries: input.countries.filter(element => element !== e)
+        })
+    }
+
     
     useEffect(() => {
         dispatch(getCountries());        
@@ -64,11 +83,16 @@ export default function ActivityCreate(){
             <h1>Create your Activity</h1>
             <form onSubmit= {e => handleSubmit(e)}>
                 <div>
-                    <label>Name</label>
-                    <input type= 'text' name= 'name' onChange= {e => handleChange(e)}></input>                    
+                    <label>Name: </label>
+                    <input type= 'text' name= 'name' onChange= {e => handleChange(e)}/>
+                    {/*{
+                        errors.name && (
+                            <p>{errors.name}</p>
+                        )
+                    }*/}                    
                 </div>
                 <div>
-                    <label>Difficulty</label>
+                    <label>Difficulty: </label>
                     <select name= 'difficulty' onChange= {e => handleChange(e)}>
                         <option>Please select</option>
                         <option value = '1'>1</option>
@@ -79,11 +103,11 @@ export default function ActivityCreate(){
                     </select>                    
                 </div>
                 <div>
-                    <label>Duration</label>
-                    <input type= 'text' placeholder= 'Enter the duration in hours' name= 'duration' onChange= {e => handleChange(e)}></input>                    
+                    <label>Duration: </label>
+                    <input type= 'number' placeholder= 'Enter the duration in hours' name= 'duration' onChange= {e => handleChange(e)}/>                    
                 </div>
                 <div>
-                    <label>Season</label>
+                    <label>Season: </label>
                     <select name= 'season' onChange= {e => handleChange(e)}>
                         <option value= ''>Please Select</option>
                         <option value = 'summer'>Summer</option>
@@ -92,24 +116,27 @@ export default function ActivityCreate(){
                         <option value = 'spring'>Spring</option>
                     </select>
                 <div>
-                    <label>Country</label>      
+                    <label>Country: </label>      
                     <select name= 'countries' onChange= {e => handleSelect(e)}>
                         <option value= ''>Select Countries</option>
                         {countries.map((element) =>(
                             <option value = {element.name}>{element.name}</option>
                         ))}                       
-                    </select>
-                <div>    
-                    <ul>
-                        <li>{input.countries.map(element => `${element} ** `)}</li>
-                    </ul>
-                </div>    
+                    </select>    
                 </div>
                 <div>     
                     <button type= 'submit'>To Create</button>
                 </div>                     
                 </div>
             </form>
+            {
+                input.countries.map(element => 
+                    <div>
+                        <p>{element}</p>
+                        <button onClick= {() => handleDelete(element)}>X</button>                       
+                    </div>
+                    )
+            }
         </div>
     )
 }

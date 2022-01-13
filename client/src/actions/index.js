@@ -47,12 +47,12 @@ export function alphabeticalOrder(payload){
 }
 
 
-/*export function populationOrder(payload){
+export function populationOrder(payload){
     return({
             type: 'POPULATION_ORDER',
             payload,
         })
-}*/
+}
 
 export function postActivity(payload){
     return async function(distpach){
@@ -60,4 +60,43 @@ export function postActivity(payload){
         return newActivity;
     }
 }
+
+export function getDetailsCountry(id){
+    return async function(distpach){
+    try {
+        const countryIdJson = await axios.get(`http://localhost:3001/countries/${id}`);
+        return distpach({
+            type: 'GET_DETAILS_COUNTRY',
+            payload: countryIdJson.data
+        })
+    } catch (error) {
+        console.log(error)
+    }        
+    }
+}
+
+
+export function getActivities(){
+    return async function(distpach){
+    try {
+        const activitiesJson = await axios.get("http://localhost:3001/activity");
+        return distpach({
+            type: 'GET_ACTIVITIES',
+            payload: activitiesJson.data
+        })
+    } catch (error) {
+        console.log(error)
+    }       
+    }
+}
+
+
+export function filterActivity(payload){
+    return({
+            type: 'FILTER_ACTIVITY',
+            payload,
+        })
+}
+
+
 

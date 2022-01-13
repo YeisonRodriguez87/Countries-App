@@ -3,7 +3,7 @@ import styles from './Card.module.css'
 
 
 
-export default function Card({flag, name, id, continent}){
+export default function Card({flag, name, id, continent, population}){
     return(
         <div className= {styles.divCard}> 
             <div>   
@@ -13,6 +13,7 @@ export default function Card({flag, name, id, continent}){
                 <h3>{name}</h3>
                 <h3>{id}</h3>
                 <h3>{continent}</h3>
+                {/*<h3>{population}</h3>*/}
             </div>
         </div>
     )

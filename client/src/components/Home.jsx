@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { getCountries, filterContinent, alphabeticalOrder, /*populationOrder*/ } from '../actions'
+import { getCountries, filterContinent, alphabeticalOrder, populationOrder, getActivities, filterActivity } from '../actions'
 import { Link } from 'react-router-dom'; 
 import Card  from './Card'
-import { Fragment } from 'react';
 import Paged from './Paged';
 import styles from './Home.module.css'
 import SearchBar from './SearchBar';
@@ -14,8 +13,9 @@ import SearchBar from './SearchBar';
 export default function Home(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
-
-    const [/*order*/, setOrder] = useState('');
+    const allActivities = useSelector((state) => state.activities);
+    const [order, setOrder] = useState('');
+   
 
     //PAGINADO-------------------------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
@@ -36,8 +36,11 @@ export default function Home(){
 
     //Funciones Handle
     useEffect(() => {
-        dispatch(getCountries());        
+        dispatch(getCountries());  
+        dispatch(getActivities());      
     }, [dispatch])
+
+    
 
     function handleAllCountries(e) {
         e.preventDefault();
@@ -51,14 +54,21 @@ export default function Home(){
     function handleAlphabeticalOrder(e) {
         dispatch(alphabeticalOrder(e.target.value));
         setCurrentPage(1);
-        setOrder(e.target.value)
+        setOrder(e.target.value)        
     }
 
-    /*function handlePopulationOrder(e) {
+    function handlePopulationOrder(e) {
+        e.preventDefault();
         dispatch(populationOrder(e.target.value));
         setCurrentPage(1);
         setOrder(e.target.value)
-    }*/  
+    } 
+
+    function handleFilterActivity(e) {
+        dispatch(filterActivity(e.target.value));
+    }
+
+    
 
 
     return(
@@ -69,13 +79,11 @@ export default function Home(){
             </button>
             <div>
                 <select onChange= {e => handleAlphabeticalOrder(e)}>
-                    <option value = ''>Order By Name</option>
                     <option value = 'Asc'>Ascendent</option>
                     <option value = 'Desc'>Descendent</option>
                 </select>
 
-                <select /*onChange= {e => handlePopulationOrder(e)}*/>
-                    <option value = ''>Order By Population</option> 
+                <select onChange= {e => handlePopulationOrder(e)}> 
                     <option value = 'High'>Higher</option>
                     <option value = 'Low'>Lower</option>
                 </select>
@@ -89,11 +97,15 @@ export default function Home(){
                     <option value = 'North America'>North America</option>
                     <option value = 'South America'>South America</option>
                     <option value = 'Antarctica'>Antarctica</option>
-                </select>
+                </select>                
                 
-                <select>
-                    <option value = 'Activities'>All Activities</option>
-                </select>
+                <select onChange= {e => handleFilterActivity(e)}>
+                    <option value= 'All'>All Activities</option>
+                        {allActivities.map((element) =>(
+                            <option value = {element.name}>{element.name}</option>
+                        ))}                       
+                </select>    
+                
 
                 <Paged
                     countriesPerPage = {countriesPerPage}
@@ -104,18 +116,17 @@ export default function Home(){
                 <div className= {styles.divCards}>
                 {
                     currentCountries?.map((element) => {
-                        return(
-                            <Fragment>
-                                <Link to = {'/home/' + element.id}>     
-                                    <Card 
-                                        key= {element.id}
-                                        flag= {element.flag} 
-                                        name= {element.name} 
-                                        id= {element.id} 
-                                        continent= {element.continent}
-                                    /> 
-                                </Link>
-                            </Fragment>
+                        return(                            
+                            <Link to = {'/home/' + element.id}>     
+                                <Card 
+                                    key= {element.id}
+                                    flag= {element.flag} 
+                                    name= {element.name} 
+                                    id= {element.id} 
+                                    continent= {element.continent}
+                                    population= {element.population}
+                                /> 
+                            </Link>                            
                         )})
                 } 
                 </div>   

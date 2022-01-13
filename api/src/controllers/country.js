@@ -28,18 +28,6 @@ const getApiInfo = async () => {
 };
 
 
-/*const getAllCountries = async (req, res) => {
-    try {
-        const dbInfo = await Country.findAll({
-            attributes: ['flag', 'name', 'continent', 'id'],
-            include: Activity            
-        })
-        res.send(dbInfo);               
-    } catch (error) {
-        res.send(error);
-    }
-};*/
-
 
 const getIdCountry = async (req, res) => {
     try {
@@ -53,7 +41,7 @@ const getIdCountry = async (req, res) => {
             attributes: ['flag', 'name', 'continent', 'id', 'capital', 'subregion', 'area', 'population'],
             include: Activity
         })
-        countryId? res.send(countryId): res.send('The entered country does not exist.');
+        countryId ? res.send(countryId): res.send('The entered country does not exist.');
     } catch (error) {
         res.send(error);
     }
@@ -69,13 +57,13 @@ const getAllNameCountries = async (req, res) => {
                   [Op.iLike]: `%${name}%`,
                 },
             },   
-            attributes: ['flag', 'name', 'id', 'continent'],
+            attributes: ['flag', 'name', 'id', 'continent', 'population', 'capital'],
         })
         if(name){
             countryName.length > 0 ? res.send(countryName): res.status(404).send('The entered country does not exist.');
         }else{
             const dbInfo = await Country.findAll({
-                attributes: ['flag', 'name', 'id', 'continent'],            
+                attributes: ['flag', 'name', 'id', 'continent', 'population', 'capital'],            
             })
             res.send(dbInfo); 
         }        

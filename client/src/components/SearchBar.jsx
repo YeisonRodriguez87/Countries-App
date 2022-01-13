@@ -10,15 +10,21 @@ export default function SearchBar(){
 
     function handleInputCountries(e) {
         e.preventDefault();
+        dispatch(getNameCountries(name));
         setName('')
         setName(e.target.value);
-        dispatch(getNameCountries(name));
+        
     }
 
     function handleSubmitCountries(e) {
         e.preventDefault();
-        setName('');
-        dispatch(getNameCountries(name));
+        if (name.length > 0) {
+            dispatch(getNameCountries(name));
+            setName('');
+        }else{
+            alert('Ingrese el pais')
+        }        
+                
     }
     return(
         <div>

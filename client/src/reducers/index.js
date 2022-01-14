@@ -2,8 +2,8 @@ const initialState = {
     countries: [], // Paises modificados
     allCountries: [], // Paises sin modificaciones
     details: [], 
-    allActivities: [], // Actividades sin modificaciones
-    activities: [] // Actividades modificadas
+    activities: [],
+   
 }
 
 
@@ -62,16 +62,19 @@ function rootReducer (state = initialState, action) {
                 }
         case 'GET_ACTIVITIES':
                 return{
-                    ...state,
-                    allActivities: action.payload,
+                    ...state,                    
                     activities: action.payload                
                 } 
         case 'FILTER_ACTIVITY':
-            const allActivities = state.allActivities;
-            const activityFiltered = action.payload === 'All' ? allActivities : allActivities.filter(element => element.allActivities === action.payload) 
+            const allActivitiesCountries = state.allCountries;
+            const activityFiltered = action.payload === 'All' 
+            ? allActivitiesCountries 
+            : allActivitiesCountries.filter(element => 
+                element.activities && 
+                element.activities.map(element => element.name).includes(action.payload)); 
                 return{
                     ...state,
-                    activities: activityFiltered
+                    countries: activityFiltered
                 }                                 
             
         default:

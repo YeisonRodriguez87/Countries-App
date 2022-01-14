@@ -13,8 +13,10 @@ import SearchBar from './SearchBar';
 export default function Home(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
+    //console.log(allCountries)
     const allActivities = useSelector((state) => state.activities);
-    const [order, setOrder] = useState('');
+    //console.log(allActivities)
+    const [/*order*/, setOrder] = useState('');
    
 
     //PAGINADO-------------------------------------------------------
@@ -24,6 +26,7 @@ export default function Home(){
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+    //console.log(currentCountries)
 
     /*function paged(pageNumber) {
         setCurrentPage(pageNumber)
@@ -66,16 +69,18 @@ export default function Home(){
 
     function handleFilterActivity(e) {
         dispatch(filterActivity(e.target.value));
+        //console.log('holaaaaaaaaaaaaaaa')
     }
 
     
 
 
     return(
-        <div className>
-            <Link to = '/activity'>Create Activity</Link>
+        <div>
+            <div className= {styles.divContainerBar}>            
             <h1>Countries App</h1>
-            <button onClick = {e => {handleAllCountries(e)}}>Show all Countries
+            <SearchBar/>
+            <button onClick = {e => {handleAllCountries(e)}}>All Countries
             </button>
             <div>
                 <select onChange= {e => handleAlphabeticalOrder(e)}>
@@ -104,15 +109,19 @@ export default function Home(){
                         {allActivities.map((element) =>(
                             <option value = {element.name}>{element.name}</option>
                         ))}                       
-                </select>    
-                
+                </select>
+                <button>
+                    <Link to = '/activity'>Create Activity</Link>
+                </button>    
+            </div>
+            </div>
 
                 <Paged
                     countriesPerPage = {countriesPerPage}
                     allCountries = {allCountries.length}
                     paged = {paged}
                 />
-                <SearchBar/>
+                
                 <div className= {styles.divCards}>
                 {
                     currentCountries?.map((element) => {
@@ -129,8 +138,7 @@ export default function Home(){
                             </Link>                            
                         )})
                 } 
-                </div>   
-            </div>
+                </div>            
         </div>
     )
 }

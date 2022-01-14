@@ -85,11 +85,7 @@ export default function ActivityCreate(){
                 <div>
                     <label>Name: </label>
                     <input type= 'text' name= 'name' onChange= {e => handleChange(e)}/>
-                    {/*{
-                        errors.name && (
-                            <p>{errors.name}</p>
-                        )
-                    }*/}                    
+                    {/*{errors.name && <p>{errors.name}</p>}*/}                    
                 </div>
                 <div>
                     <label>Difficulty: </label>

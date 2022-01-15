@@ -22,7 +22,7 @@ export default function SearchBar(){
             dispatch(getNameCountries(name));
             setName('');
         }else{
-            alert('Ingrese el pais')
+            alert('Enter a country please!!')
         }        
                 
     }

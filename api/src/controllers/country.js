@@ -76,7 +76,6 @@ const getAllNameCountries = async (req, res) => {
 
 module.exports = {
     getApiInfo,
-    //getAllCountries,
     getIdCountry,
     getAllNameCountries
 }

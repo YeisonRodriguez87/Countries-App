@@ -41,9 +41,6 @@ export default function ActivityCreate(){
     const navigate = useNavigate();
     const countries = useSelector((state) => state.countries);
     const [errors, setErrors] = useState({});
-
-    
-
     const [input, setInput] = useState({
         name: '',
         difficulty: '',
@@ -53,7 +50,7 @@ export default function ActivityCreate(){
     })    
     
 
-    function handleChange(e) {        
+    function handleChange(e) {              
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -62,11 +59,8 @@ export default function ActivityCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
-        console.log(input)
-    } 
-    
-    
-   
+        //console.log(input)
+    }    
     
 
     function handleSelect(e) {
@@ -85,15 +79,15 @@ export default function ActivityCreate(){
         setErrors(validationForm(input));
         if (!Object.keys(errors).length) {
             dispatch(postActivity(input));
-        alert('Activity Created Successfully!!');
-        navigate('/home')
-        setInput({
-        name: '',
-        difficulty: '',
-        duration: '',
-        season: '',
-        countries: []
-        })
+            alert('Activity Created Successfully!!');
+            navigate('/home')
+            setInput({
+            name: '',
+            difficulty: '',
+            duration: '',
+            season: '',
+            countries: []
+            })
         } else {
             alert('All fields are required!!')
         }                
@@ -151,7 +145,7 @@ export default function ActivityCreate(){
                     {errors.season && <p>{errors.season}</p>}
                 <div>
                     <label>Country: </label>      
-                    <select name= 'countries' onChange= {e => handleSelect(e)}>                        
+                    <select name= 'countries' placeholder= 'Select Countries'onChange= {e => handleSelect(e)}>                                    
                         <option value= ''>Select Countries</option>
                         {countries.map((element) =>(
                             <option value = {element.name}>{element.name}</option>

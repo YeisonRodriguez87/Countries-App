@@ -27,7 +27,7 @@ export default function Detail() {
                 <p>Area: {detailCountry.area} km2</p>
                 <p>Population: {detailCountry.population}</p>
                 <div>Activities:
-                    {
+                    {   
                         detailCountry.activities?.map((element) => {
                             return(                                                                
                                 <Activity 
@@ -37,9 +37,9 @@ export default function Detail() {
                                     duration= {element.duration}
                                     season= {element.season}
                                 />                           
-                            )})
-                    }
-                </div>    
+                            )}) 
+                    } 
+                </div>  
             </div>                       
             <Link to= '/home'>
                 <button>Back To Home</button>

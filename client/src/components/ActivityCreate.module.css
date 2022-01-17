@@ -1,0 +1,33 @@
+.divContainer{
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    border-radius: 30px;
+    border-color: black;
+    box-shadow: 0 0 10px 5px rgb(170, 167, 167);
+    color: rgb(39, 38, 41);    
+    background-color: white;    
+    border: 1px solid rgba(136, 101, 206, 0);
+    margin-top: 5px;
+    width: auto;    
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.divForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}    
+
+.pErrors{
+    color: red;
+}

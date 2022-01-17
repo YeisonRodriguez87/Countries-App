@@ -1,4 +1,11 @@
 body {
+  background-image: url(../src/components/HomePage.jpg);
+  background-size: cover;
+  background-repeat: repeat;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #eaeaea;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -17,32 +17,31 @@ export default function Detail() {
 
     return(
         <div>
-            <div  className= {styles.divCardDetails}>
+            <div className= {styles.divCardDetails}>
                 <img className= {styles.imgFlag} alt='flag' src= {detailCountry.flag}/>
-                <p>Name: {detailCountry.name}</p>
-                <p>Id: {detailCountry.id}</p>
-                <p>Continent: {detailCountry.continent}</p>            
-                <p>Capital: {detailCountry.capital}</p>
-                <p>Subregion: {detailCountry.subregion}</p>
-                <p>Area: {detailCountry.area} km2</p>
-                <p>Population: {detailCountry.population}</p>
-                <div>Activities:
-                    {   
-                        detailCountry.activities?.map((element) => {
-                            return(                                                                
-                                <Activity 
-                                    key= {element.id}                                       
-                                    name= {element.name} 
-                                    difficulty= {element.difficulty} 
-                                    duration= {element.duration}
-                                    season= {element.season}
-                                />                           
-                            )}) 
-                    } 
-                </div>  
+                <p><strong>Name:</strong> {detailCountry.name}</p>
+                <p><strong>Continent:</strong> {detailCountry.continent}</p>            
+                <p><strong>Capital:</strong> {detailCountry.capital}</p>
+                <p><strong>Subregion:</strong> {detailCountry.subregion}</p>
+                <p><strong>Area:</strong> {detailCountry.area} km2</p>
+                <p><strong>Population:</strong> {detailCountry.population}</p>                  
+            </div>
+            <div>
+                {   
+                    detailCountry.activities?.map((element) => {
+                        return(                                                              
+                            <Activity 
+                                key= {element.id}                                       
+                                name= {element.name} 
+                                difficulty= {element.difficulty} 
+                                duration= {element.duration}
+                                season= {element.season}
+                            />                           
+                        )}) 
+                } 
             </div>                       
             <Link to= '/home'>
-                <button>Back To Home</button>
+                <button className={styles.btn}>Back To Home</button>
             </Link>               
         </div>
     )

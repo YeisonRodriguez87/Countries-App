@@ -1,0 +1,10 @@
+.btn{
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;    
+    justify-content: space-around;
+}
+
+.btn:hover{
+    background-color: rgb(158, 157, 157);
+}

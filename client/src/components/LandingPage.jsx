@@ -6,8 +6,8 @@ import styles from './LandingPage.module.css';
 export default function LandingPage(){
     return(
         <div className = {styles.divLanding}>
-            <div className = {styles.divH1}>
-                <h1 className = {styles.h1}>Countries App</h1> 
+            <div>
+                <h1>Countries App</h1> 
                 <h3>¡Welcome to tour the world!</h3> 
                 <Link to = '/home'>
                     <button className = {styles.btn}>LET'S GO</button>

@@ -6,7 +6,6 @@ import ActivityCreate from './components/ActivityCreate';
 import Detail from './components/Detail';
 
 
-
 function App() {
   return (    
     <div className="App">

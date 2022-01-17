@@ -4,16 +4,15 @@
     justify-content: space-around; 
     gap: 2rem;   
     padding-top: 20px;
-    border-radius: 10px;   
+    border-radius: 30px;   
     border-color: black;
     box-shadow: 0 0 10px 5px rgb(170, 167, 167);
-    color: rgb(39, 38, 41);
+    color: whitesmoke;
     border: 1px solid rgba(39, 38, 41, 0);
     margin-top: 20px;
-    background-color: rgb(31, 100, 139);
+    background-color: rgb(90, 89, 89);
+    font-size: 15px;    
 }
-
-
 
 .divCards{
     display: flex;

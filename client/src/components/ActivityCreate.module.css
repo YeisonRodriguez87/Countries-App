@@ -46,6 +46,7 @@
     color: #525c66; 
     font-size: 1em;
     resize: none;
+    border-radius: 30px;
 }    
 
 .pErrors{

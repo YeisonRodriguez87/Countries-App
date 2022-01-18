@@ -77,20 +77,23 @@ export default function Home(){
             <div className= {styles.divContainerBar}>            
                 <h1>Countries App</h1>
                 <SearchBar/>
-                <button onClick = {e => {handleAllCountries(e)}}>All Countries
+                <button onClick = {e => {handleAllCountries(e)}} className= {styles.btn}>All Countries
+                </button>
+                <button className= {styles.btn}>
+                    <Link to = '/activity' style= {{textDecoration: 'none', color: 'black'}}>Create Activity</Link>
                 </button>
                 <div>
-                    <select onChange= {e => handleAlphabeticalOrder(e)}>
+                    <select className= {styles.inputs} onChange= {e => handleAlphabeticalOrder(e)}>
                         <option value = 'Asc'>Ascendent</option>
                         <option value = 'Desc'>Descendent</option>
                     </select>
 
-                    <select onChange= {e => handlePopulationOrder(e)}> 
+                    <select className= {styles.inputs} onChange= {e => handlePopulationOrder(e)}> 
                         <option value = 'High'>Higher</option>
                         <option value = 'Low'>Lower</option>
                     </select>
                     
-                    <select onChange= {e => handleFilterContinent(e)}>
+                    <select className= {styles.inputs} onChange= {e => handleFilterContinent(e)}>
                         <option value = 'All'>All Continents</option>
                         <option value = 'Oceania'>Oceania</option>
                         <option value = 'Asia'>Asia</option>
@@ -101,7 +104,7 @@ export default function Home(){
                         <option value = 'Antarctica'>Antarctica</option>
                     </select>                
                     
-                    <select onChange= {e => handleFilterActivity(e)}>
+                    <select className= {styles.inputs} onChange= {e => handleFilterActivity(e)}>
                         <option value= 'All'>All Activities</option>
                             {allActivities.map(element =>(
                                     <option  
@@ -112,9 +115,7 @@ export default function Home(){
                                     </option>
                             ))}                       
                             </select>
-                    <button>
-                        <Link to = '/activity'>Create Activity</Link>
-                    </button>    
+                        
                 </div>
             </div>
 
@@ -128,7 +129,7 @@ export default function Home(){
                 {
                     currentCountries?.map((element) => {
                         return(                            
-                            <Link to = {'/home/' + element.id} style= {{textDecoration: 'none', color: 'none', textAlign: 'center'}}>     
+                            <Link to = {'/home/' + element.id} style= {{textDecoration: 'none', color: 'none'}}>     
                                 <Card 
                                     key= {element.name}
                                     flag= {element.flag} 

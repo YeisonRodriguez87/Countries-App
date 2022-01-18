@@ -8,9 +8,9 @@ export default function LandingPage(){
         <div className = {styles.divLanding}>
             <div>
                 <h1>Countries App</h1> 
-                <h3>¡Welcome to tour the world!</h3> 
+                <h3>¡Let's go around the world!</h3> 
                 <Link to = '/home'>
-                    <button className = {styles.btn}>LET'S GO</button>
+                    <button className = {styles.btn}>LET'S START</button>
                 </Link>
             </div>
         </div>

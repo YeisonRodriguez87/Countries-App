@@ -1,0 +1,25 @@
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 7px;    
+    border: none; 
+    color: #525c66; 
+    font-size: 0.8rem;
+    resize: none;
+    border-radius: 30px;
+    
+}
+
+.btn {
+    border-radius: 30px;
+    border-color: white;
+}
+
+.btn:hover {
+    border-radius: 30px;
+    border-color: rgb(136, 135, 135);
+}

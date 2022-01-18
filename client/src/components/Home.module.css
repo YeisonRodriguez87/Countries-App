@@ -2,8 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around; 
+    align-items: center;
     gap: 2rem;   
-    padding-top: 20px;
+    padding: 5px;
     border-radius: 30px;   
     border-color: black;
     box-shadow: 0 0 10px 5px rgb(170, 167, 167);
@@ -11,7 +12,22 @@
     border: 1px solid rgba(39, 38, 41, 0);
     margin-top: 20px;
     background-color: rgb(90, 89, 89);
-    font-size: 15px;
+    font-size: 16px;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 2px;    
+    border: none; 
+    color: #525c66; 
+    font-size: 0.8rem;
+    resize: none;
+    border-radius: 30px;
 }
 
 .divCards{
@@ -21,5 +37,46 @@
     gap: 2rem;
     padding: 80px;   
     padding-top: 20px;    
+}
+
+.btn {
+    border-radius: 30px;
+    border-color: black;
+    box-shadow: 0 0 10px 5px rgb(90, 89, 89);
+    color: rgb(39, 38, 41);    
+    background-color: white;    
+    border: 1px solid rgba(136, 101, 206, 0);
+    margin-top: 20px; 
+    padding: 0.5em 1.5em;
+    text-align: center;
+    font-family: italic;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;    
+    transition: .3s;
+    z-index: 1;
+}    
+   
+.btn::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: rgb(90, 89, 89);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+   
+.btn:hover::before {
+    width: 105%;
+}
+
+.btn:hover {
+    color: white;
 }
 

@@ -15,12 +15,7 @@ export default function Home(){
     //console.log(allCountries)
     const allActivities = useSelector((state) => state.activities);
     //console.log(allActivities)
-    const [/*order*/, setOrder] = useState('');
-
-    useEffect(() => {
-        dispatch(getCountries());  
-        dispatch(getActivities());      
-    }, [dispatch])
+    const [/*order*/, setOrder] = useState('');   
    
 
     //PAGINADO-------------------------------------------------------
@@ -40,6 +35,10 @@ export default function Home(){
     }
     //PAGINADO------------------------------------------------------
 
+    useEffect(() => {
+        dispatch(getCountries());  
+        dispatch(getActivities());      
+    }, [dispatch])
 
     //Funciones Handle
     function handleAllCountries(e) {
@@ -48,10 +47,12 @@ export default function Home(){
     }
 
     function handleFilterContinent(e) {
+        e.preventDefault();
         dispatch(filterContinent(e.target.value));
     }
 
     function handleAlphabeticalOrder(e) {
+        e.preventDefault();
         dispatch(alphabeticalOrder(e.target.value));
         setCurrentPage(1);
         setOrder(e.target.value)        
@@ -65,6 +66,7 @@ export default function Home(){
     } 
 
     function handleFilterActivity(e) {
+        e.preventDefault();
         dispatch(filterActivity(e.target.value));
         //console.log('holaaaaaaaaaaaaaaa')
     }
@@ -126,11 +128,11 @@ export default function Home(){
                 {
                     currentCountries?.map((element) => {
                         return(                            
-                            <Link to = {'/home/' + element.id}>     
+                            <Link to = {'/home/' + element.id} style= {{textDecoration: 'none', color: 'none', textAlign: 'center'}}>     
                                 <Card 
                                     key= {element.name}
                                     flag= {element.flag} 
-                                    name= {element.name} 
+                                    name= {element.name}
                                     id= {element.id} 
                                     continent= {element.continent}
                                     population= {element.population}

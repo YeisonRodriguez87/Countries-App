@@ -12,8 +12,7 @@ export default function SearchBar(){
         e.preventDefault();
         dispatch(getNameCountries(name));
         setName('')
-        setName(e.target.value);
-        
+        setName(e.target.value);        
     }
 
     function handleSubmitCountries(e) {

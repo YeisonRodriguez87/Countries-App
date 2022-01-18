@@ -23,8 +23,8 @@ export default function Detail() {
                 <p><strong>Continent:</strong> {detailCountry.continent}</p>            
                 <p><strong>Capital:</strong> {detailCountry.capital}</p>
                 <p><strong>Subregion:</strong> {detailCountry.subregion}</p>
-                <p><strong>Area:</strong> {detailCountry.area} km2</p>
-                <p><strong>Population:</strong> {detailCountry.population}</p>                  
+                <p><strong>Area:</strong> {parseInt(detailCountry.area).toLocaleString()} km2</p>
+                <p><strong>Population:</strong> {parseInt(detailCountry.population).toLocaleString()}</p>                  
             </div>
             <div>
                 {   

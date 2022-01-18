@@ -108,7 +108,7 @@ export default function ActivityCreate(){
 
     return(
         <div className= {styles.divContainer}>
-            <Link to = '/home'><button>Back to Home</button></Link>
+            <Link to = '/home'><button className= {styles.btn}>Back to Home</button></Link>
             <h1>Create  your Activity</h1>
             <div className= {styles.divForm}>           
                 <form onSubmit= {e => handleSubmit(e)}>
@@ -155,16 +155,17 @@ export default function ActivityCreate(){
                             {errors.countries && <p className= {styles.pErrors}>{errors.countries}</p>}    
                         </div>
                         <div>     
-                            <button type= 'submit'>To Create</button>
+                            <button type= 'submit' className= {styles.btn}>To Create</button>
                         </div>                     
                         </div>
                 </form>
             </div>
             {
-                input.countries.map(element => 
-                    <div>
-                        <p>{element}</p>
-                        <button onClick= {() => handleDelete(element)}>X</button>                       
+                input.countries.map((element) => 
+                    <div className= {styles.divCountry}>
+                        
+                        <p className= {styles.p}>{element}</p>
+                        <button onClick= {() => handleDelete(element)} className= {styles.btnDelete}>X</button>                       
                     </div>
                     )
             }

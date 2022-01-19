@@ -10,7 +10,7 @@ export function getCountries(){
             payload: countriesJson.data
         })
     } catch (error) {
-        console.log(error)
+        return(error)
     }       
     }
 }
@@ -25,7 +25,7 @@ export function getNameCountries(name){
             payload: countriesJson.data
         })
     } catch (error) {
-        console.log(error)
+        return(error)
     }        
     }
 }
@@ -70,7 +70,7 @@ export function getDetailsCountry(id){
             payload: countryIdJson.data
         })
     } catch (error) {
-        console.log(error)
+        return(error)
     }        
     }
 }
@@ -85,7 +85,7 @@ export function getActivities(){
             payload: activitiesJson.data
         })
     } catch (error) {
-        console.log(error)
+        return(error)
     }       
     }
 }

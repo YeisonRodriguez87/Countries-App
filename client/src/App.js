@@ -15,7 +15,7 @@ function App() {
           <Route path = '/home' element = {<Home/>}/>
           <Route path = '/activity' element = {<ActivityCreate/>}/>
           <Route path = '/home/:id' element = {<Detail/>}/>
-          <Route path = '*' element = {<h1>PAGE NOT FOUND!!!</h1>}/>
+          <Route path = '*' element = {<img src= "../Error404.png" alt= "Page Not Found"/>}/>
         </Routes>
       </BrowserRouter> 
     </div>

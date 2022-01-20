@@ -23,9 +23,9 @@ export default function SearchBar(){
             setName('');
         }else{
             alert('Enter a country please!!')
-        }        
-                
-    }
+        }                
+    }  
+    
     return(
         <div>
             <input className= {styles.inputs} type="text" placeholder={'Enter the Country...'} value = {name} onChange= {e => handleInputCountries(e)}/> 

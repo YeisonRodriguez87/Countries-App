@@ -107,12 +107,7 @@ export default function Home(){
                     <select className= {styles.inputs} onChange= {e => handleFilterActivity(e)}>
                         <option value= 'All'>All Activities</option>
                             {allActivities.map(element =>(
-                                    <option  
-                                        key= {element}                                 
-                                        value = {element.name}
-                                        >
-                                        {element.name}
-                                    </option>
+                                    <option value = {element.name} key= {element.id}>{element.name}</option>
                             ))}                       
                             </select>
                         
@@ -130,13 +125,13 @@ export default function Home(){
                     currentCountries?.map((element) => {
                         return(                            
                             <Link to = {'/home/' + element.id} style= {{textDecoration: 'none', color: 'none'}}>     
-                                <Card 
-                                    key= {element.name}
+                                <Card                                    
                                     flag= {element.flag} 
                                     name= {element.name}
                                     id= {element.id} 
                                     continent= {element.continent}
                                     population= {element.population}
+                                    key= {element.id}
                                 /> 
                             </Link>                            
                         )})

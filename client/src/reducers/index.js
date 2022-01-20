@@ -25,7 +25,7 @@ function rootReducer (state = initialState, action) {
             const continentFiltered = action.payload === 'All' ? allCountries : allCountries.filter(element => element.continent === action.payload) 
             return{
                 ...state,
-                countries: continentFiltered
+                countries: continentFiltered,                
             }        
         case 'ALPHABETICAL_ORDER':            
             const orderAlphabeticalArray =  action.payload === 'Asc' ? 
@@ -50,7 +50,7 @@ function rootReducer (state = initialState, action) {
             return{
                 ...state,
                 countries: orderPopulationArray
-            }
+            }            
         case 'POST_ACTIVITY':
                 return{
                     ...state,                      

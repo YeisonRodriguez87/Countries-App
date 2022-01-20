@@ -8,6 +8,7 @@ import styles from './SearchBar.module.css'
 export default function SearchBar(){
     const dispatch = useDispatch();
     const [name, setName] = useState('');
+    
 
     function handleInputCountries(e) {
         e.preventDefault();

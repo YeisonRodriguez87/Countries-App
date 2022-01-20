@@ -57,13 +57,13 @@ const getAllNameCountries = async (req, res) => {
                   [Op.iLike]: `%${name}%`,
                 },
             },   
-            attributes: ['flag', 'name', 'id', 'continent', 'population', 'capital'],
+            attributes: ['flag', 'name', 'id', 'continent', 'population', 'area', 'capital'],
         })
         if(name){
             countryName.length > 0 ? res.send(countryName): res.status(404).send('The entered country does not exist.');
         }else{
             const dbInfo = await Country.findAll({
-                attributes: ['flag', 'name', 'id', 'continent', 'population', 'capital'], 
+                attributes: ['flag', 'name', 'id', 'continent', 'population', 'capital', 'area'], 
                 include : Activity           
             })
             res.send(dbInfo); 

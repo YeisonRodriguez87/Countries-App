@@ -64,6 +64,7 @@ export default function Home(){
         setCurrentPage(1);
         setOrder(e.target.value)
     } 
+    
 
     function handleFilterActivity(e) {
         e.preventDefault();
@@ -129,8 +130,7 @@ export default function Home(){
                                     flag= {element.flag} 
                                     name= {element.name}
                                     id= {element.id} 
-                                    continent= {element.continent}
-                                    population= {element.population}
+                                    continent= {element.continent}                                    
                                     key= {element.id}
                                 /> 
                             </Link>                            

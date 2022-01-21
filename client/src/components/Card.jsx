@@ -12,7 +12,7 @@ export default function Card({flag, name, id, continent}){
             <div>
                 <h3>{name}</h3>
                 <h3>{id}</h3>
-                <h3>{continent}</h3>                            
+                <h3>{continent}</h3>                          
             </div>
         </div>
     )

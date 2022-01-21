@@ -6,7 +6,7 @@ import styles from './ActivityCreate.module.css'
 
  
 
-const validationForm = (input, allActivities) => {
+const validationForm = (input) => {
     let errors = {};
     let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
@@ -14,8 +14,6 @@ const validationForm = (input, allActivities) => {
         errors.name = "*Name required";
     }else if(!regexName.test(input.name.trim())){
         errors.name = "*The name field only accepts letters and blank spaces";
-    }else if(allActivities.includes(input.name.trim())){
-        errors.name = "*Existing activity";
     };
     if(!input.difficulty){
         errors.difficulty = "*Difficulty required";
@@ -39,7 +37,7 @@ export default function ActivityCreate(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const countries = useSelector((state) => state.countries);
-    const activities = useSelector((state) => state.activities);
+    //const activities = useSelector((state) => state.activities);
     const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: '',
@@ -48,7 +46,7 @@ export default function ActivityCreate(){
         season: '',
         countries: []
     }) 
-    const allActivities = activities.length > 0 && activities.map((element) => element.name);
+    //const allActivities = activities.length > 0 && activities.map((element) => element.name);
     
     useEffect(() => {
         dispatch(getCountries()); 
@@ -64,7 +62,7 @@ export default function ActivityCreate(){
         setErrors(validationForm({
             ...input,
             [e.target.name]: e.target.value
-        }, allActivities))
+        }))
         //console.log(input)
     }    
     
@@ -80,13 +78,13 @@ export default function ActivityCreate(){
             setErrors(validationForm({
                 ...input,
                 countries: [...input.countries, e.target.value]
-            }, allActivities))           
+            }))           
         }               
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        setErrors(validationForm(input, allActivities));
+        setErrors(validationForm(input));
         if (input.name && input.difficulty && input.duration && input.season && input.countries.length && !Object.keys(errors).length) {
             dispatch(postActivity(input));
             alert('Activity Created Successfully!!');

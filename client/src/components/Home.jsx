@@ -15,8 +15,6 @@ export default function Home(){
     const allActivities = useSelector((state) => state.activities);
     const [/*order*/, setOrder] = useState('');   
    
-
-    //PAGINADO-------------------------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, /*setCountriesPerPage*/] = useState(10);
     const indexOfLastCountry = currentPage * countriesPerPage;
@@ -29,7 +27,7 @@ export default function Home(){
     const paged = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
-    //PAGINADO------------------------------------------------------
+
 
     useEffect(() => {
         dispatch(getCountries());  

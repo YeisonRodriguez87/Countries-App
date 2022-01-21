@@ -82,8 +82,8 @@ export default function Home(){
                     </select>
 
                     <select className= {styles.inputs} onChange= {e => handlePopulationOrder(e)}> 
-                        <option value = 'High'>Higher</option>
-                        <option value = 'Low'>Lower</option>
+                        <option value = 'High'>Lower</option>
+                        <option value = 'Low'>Higher</option>
                     </select>
                     
                     <select className= {styles.inputs} onChange= {e => handleFilterContinent(e)}>

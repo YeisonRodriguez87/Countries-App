@@ -16,6 +16,7 @@ export function getCountries(){
 }
 
 
+
 export function getNameCountries(name){
     return async function(distpach){
     try {
@@ -25,7 +26,9 @@ export function getNameCountries(name){
             payload: countriesJson.data
         })
     } catch (error) {
-        return(error)
+        if (error.response) {
+            alert(error.response.data)
+        }
     }        
     }
 }

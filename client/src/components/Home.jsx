@@ -12,20 +12,16 @@ import SearchBar from './SearchBar';
 export default function Home(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
-    //console.log(allCountries)
     const allActivities = useSelector((state) => state.activities);
-    //console.log(allActivities)
     const [/*order*/, setOrder] = useState('');   
    
 
     //PAGINADO-------------------------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage] = useState(10);
+    const [countriesPerPage, /*setCountriesPerPage*/] = useState(10);
     const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;    
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
-    //console.log(currentCountries)
 
     /*function paged(pageNumber) {
         setCurrentPage(pageNumber)
@@ -63,13 +59,11 @@ export default function Home(){
         dispatch(populationOrder(e.target.value));
         setCurrentPage(1);
         setOrder(e.target.value)
-    } 
-    
+    }    
 
     function handleFilterActivity(e) {
         e.preventDefault();
         dispatch(filterActivity(e.target.value));
-        //console.log('holaaaaaaaaaaaaaaa')
     }
 
 
@@ -108,19 +102,16 @@ export default function Home(){
                     <select className= {styles.inputs} onChange= {e => handleFilterActivity(e)}>
                         <option value= 'All'>All Activities</option>
                             {allActivities.map(element =>(
-                                    <option value = {element.name} key= {element.id}>{element.name}</option>
+                                    <option value = {element.name} key= {element}>{element.name}</option>
                             ))}                       
-                            </select>
-                        
+                            </select>                        
                 </div>
             </div>
-
                 <Paged
                     countriesPerPage = {countriesPerPage}
                     allCountries = {allCountries.length}
                     paged = {paged}
-                />
-                
+                />                
                 <div className= {styles.divCards}>
                 {
                     currentCountries?.map((element) => {
@@ -131,10 +122,11 @@ export default function Home(){
                                     name= {element.name}
                                     id= {element.id} 
                                     continent= {element.continent}                                    
-                                    key= {element.id}
+                                    key= {element}
                                 /> 
                             </Link>                            
-                        )})
+                        )
+                    })
                 } 
                 </div>            
         </div>

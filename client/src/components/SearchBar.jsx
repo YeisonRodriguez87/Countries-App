@@ -12,7 +12,7 @@ export default function SearchBar(){
 
     function handleInputCountries(e) {
         e.preventDefault();
-        dispatch(getNameCountries(name));
+        //dispatch(getNameCountries(name));
         setName('')
         setName(e.target.value);        
     }

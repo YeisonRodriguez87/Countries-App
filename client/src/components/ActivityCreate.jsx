@@ -37,7 +37,6 @@ export default function ActivityCreate(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const countries = useSelector((state) => state.countries);
-    //const activities = useSelector((state) => state.activities);
     const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: '',
@@ -46,7 +45,6 @@ export default function ActivityCreate(){
         season: '',
         countries: []
     }) 
-    //const allActivities = activities.length > 0 && activities.map((element) => element.name);
     
     useEffect(() => {
         dispatch(getCountries()); 
@@ -63,7 +61,6 @@ export default function ActivityCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
-        //console.log(input)
     }    
     
 
@@ -165,12 +162,11 @@ export default function ActivityCreate(){
             </div>
             {
                 input.countries.map((element) => 
-                    <div className= {styles.divCountry}>
-                        
+                    <div className= {styles.divCountry}>                        
                         <p className= {styles.p}>{element}</p>
                         <button onClick= {() => handleDelete(element)} className= {styles.btnDelete}>X</button>                       
                     </div>
-                    )
+                )
             }
         </div>
     )

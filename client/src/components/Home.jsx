@@ -7,13 +7,15 @@ import Card  from './Card'
 import Paged from './Paged';
 import styles from './Home.module.css'
 import SearchBar from './SearchBar';
+import Loading from './Loading';
 
 
 export default function Home(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
     const allActivities = useSelector((state) => state.activities);
-    const [/*order*/, setOrder] = useState('');   
+    const [/*order*/, setOrder] = useState(''); 
+    const [loader, setLoader] = useState(true);  
    
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, /*setCountriesPerPage*/] = useState(10);
@@ -30,8 +32,12 @@ export default function Home(){
 
 
     useEffect(() => {
+        setLoader(true);
         dispatch(getCountries());  
-        dispatch(getActivities());      
+        dispatch(getActivities()); 
+        setTimeout(() => {
+            setLoader(false);
+        }, 1000);     
     }, [dispatch])
 
     //Funciones Handle
@@ -112,6 +118,9 @@ export default function Home(){
                 />                
                 <div className= {styles.divCards}>
                 {
+                    loader ? (
+                        <Loading />
+                    ) :
                     currentCountries?.map((element) => {
                         return(                            
                             <Link to = {'/home/' + element.id} style= {{textDecoration: 'none', color: 'none'}}>     

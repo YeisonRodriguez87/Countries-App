@@ -22,9 +22,7 @@ export default function Home(){
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;    
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
-    /*function paged(pageNumber) {
-        setCurrentPage(pageNumber)
-    }*/
+    
     const paged = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
